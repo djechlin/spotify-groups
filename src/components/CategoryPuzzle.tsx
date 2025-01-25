@@ -128,7 +128,7 @@ export default function GroupPuzzle({ config } : { config: Config }) {
             <div>Extra Guesses: {guesses}</div>
             {/* <div>Hints Used: {hintsUsed}</div> */}
           </div>
-          {items.every(item => item.solved) && <div className="text-2xl font-bold text-green-500">Congratulations! You've won!</div>}
+          {items.every(item => item.solved) && <div className="text-2xl font-bold text-green-500">Congratulations! You&apos;ve won!</div>}
         </div>
       </div>
     </div>
