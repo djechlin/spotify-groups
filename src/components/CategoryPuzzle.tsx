@@ -49,10 +49,17 @@ function initGridItem(configItem: ConfigItem, index: number, color: string): Gri
   };
 }
 
+type SolvedCategory = {
+  name: string,
+  color: string
+}
 
 export default function GroupPuzzle({ config } : { config: Config }) {
   const [items, setItems] = useState<GridItem[]>([])
   const [guesses, setGuesses] = useState<number>(0);
+  
+  // do not like this factorization
+  const [solvedCategories, setSolvedCategories] = useState<SolvedCategory[]>([]);
 
     useEffect(() => {
       const categories = _.uniq(config.items.map(item => item.category));
@@ -94,7 +101,9 @@ export default function GroupPuzzle({ config } : { config: Config }) {
         newItems[item.index].solved = true;
         newItems[item.index].clicked = false;
       });
+      const newSolvedCategories = [...solvedCategories, {name: clickedItems[0].category, color: clickedItems[0].color}];
       setItems(newItems);
+      setSolvedCategories(newSolvedCategories);
     }
 
   return (
@@ -128,7 +137,12 @@ export default function GroupPuzzle({ config } : { config: Config }) {
             <div>Extra Guesses: {guesses}</div>
             {/* <div>Hints Used: {hintsUsed}</div> */}
           </div>
-          {items.every(item => item.solved) && <div className="text-2xl font-bold text-green-500">Congratulations! You&apos;ve won!</div>}
+          <div>
+            {solvedCategories.map((category, i) => (
+              <div key={i} className={`text-2xl bg-${category.color}`}>{category.name}</div>
+            ))}
+          </div>
+          {items.every(item => item.solved) && <div className="text-2xl font-bold text-purple-500">Congratulations! You&apos;ve won!</div>}
         </div>
       </div>
     </div>
