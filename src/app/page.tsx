@@ -96,9 +96,13 @@ const config = {
 
 export default function SpotifyConnections() {
   return (
-    <div>
-    <CategoryPuzzle config={config}></CategoryPuzzle>
-    <SpotifyPlaylist></SpotifyPlaylist>
+    <div className="flex flex-row gap-4 w-full">
+      <div className="w-2/3">
+          <CategoryPuzzle config={config}></CategoryPuzzle>
+      </div>
+      <div className="w-1/3">
+        <SpotifyPlaylist></SpotifyPlaylist>
+      </div>
     </div>
   )
 }
