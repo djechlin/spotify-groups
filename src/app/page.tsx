@@ -2,7 +2,6 @@
 
 import { SpotifyPlaylist } from "@/components/SpotifyPlaylist"
 import CategoryPuzzle from '@/components/CategoryPuzzle';
-import type Config from '@/components/CategoryPuzzle';
 
 const sad = 'Somebody died';
 const dance = 'Most known as a dance';
